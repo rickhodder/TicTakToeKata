@@ -1,4 +1,4 @@
-Tic-Tac-Toe Checker
+# Tic-Tac-Toe Checker
 If we were to set up a Tic-Tac-Toe game, we would want to know whether the board’s current state is solved, wouldn’t we? Our goal is to create a function that will check that for us!
 
 Assume that the board comes in the form of a 3×3 array, where the value is 0 if a spot is empty, 1 if it is an X, or 2 if it is an O, like so:
@@ -22,9 +22,9 @@ dotnet new sln
 
 dotnet new xunit
 
-dotnet sln add .\TicTacToeKata.csproj
+dotnet sln add .\TicTakToeKata.csproj
 
-rename unittest1.cs TicTacToeKataTests.cs
+rename unittest1.cs TicTakToeKataTests.cs
 ```
 
-Finally, open TicTacToeKataTests.cs, and change the name of the class from "UnitTest1" to "TicTacToeKataTests"
+Finally, open TicTakToeKataTests.cs, and change the name of the class from "UnitTest1" to "TicTakToeKataTests"
