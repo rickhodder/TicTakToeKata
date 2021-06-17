@@ -22,5 +22,14 @@ namespace TicTakToeKata
 
             Assert.Equal(1, _sut.Evaluate());
         }
+        [Fact]
+        public void RowOfOs_OWins()
+        {
+            _sut.SetCell(0,0,2);
+            _sut.SetCell(0,1,2);
+            _sut.SetCell(0,2,2);
+
+            Assert.Equal(2, _sut.Evaluate());
+        }
     }
 }
