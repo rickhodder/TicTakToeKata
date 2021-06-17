@@ -52,5 +52,45 @@ namespace TicTakToeKata
             Assert.Equal(2, _sut.Evaluate());
         }
 
+        [Fact]
+        public void DiagonalXs_XWins()
+        {
+            _sut.SetCell(0,0,1);
+            _sut.SetCell(1,1,1);
+            _sut.SetCell(2,2,1);
+
+            Assert.Equal(1, _sut.Evaluate());
+        }
+
+        [Fact]
+        public void DiagonalOs_OWins()
+        {
+            _sut.SetCell(0,0,2);
+            _sut.SetCell(1,1,2);
+            _sut.SetCell(2,2,2);
+
+            Assert.Equal(2, _sut.Evaluate());
+        }
+
+        [Fact]
+        public void ReverseDiagonalXs_XWins()
+        {
+            _sut.SetCell(0,2,1);
+            _sut.SetCell(1,1,1);
+            _sut.SetCell(2,1,1);
+
+            Assert.Equal(1, _sut.Evaluate());
+        }
+
+        [Fact]
+        public void ReverseDiagonalOs_OWins()
+        {
+            _sut.SetCell(0,0,2);
+            _sut.SetCell(1,1,2);
+            _sut.SetCell(2,2,2);
+
+            Assert.Equal(2, _sut.Evaluate());
+        }
+
     }
 }

@@ -8,17 +8,35 @@ namespace TicTakToeKata
 
         public int Evaluate()
         {
+            var result = -1;
+
             for (int row = 0; row < _cells.GetLength(0); row++)
             {
-                var result = CheckRow(row);
+                result = CheckRow(row);
                 if(result!=-1) return result;
             }
 
             for (int column = 0; column < _cells.GetLength(1); column++)
             {
-                var result = CheckColumn(column);
+                result = CheckColumn(column);
                 if(result!=-1) return result;
             }
+
+            result = CheckDiagonals();
+            return result;
+        }
+
+        public int CheckDiagonals()
+        {
+            if(_cells[0,0]==1 && _cells[1,1]==1 && _cells[2,2]==1)
+                return 1;
+            if(_cells[0,0]==2 && _cells[1,1]==2 && _cells[2,2]==2)
+                return 2;
+
+            if(_cells[0,2]==1 && _cells[1,1]==1 && _cells[2,1]==1)
+                return 1;
+            if(_cells[0,2]==2 && _cells[1,1]==2 && _cells[2,1]==2)
+                return 2;
 
             return -1;
         }
