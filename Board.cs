@@ -6,9 +6,14 @@ namespace TicTakToeKata
 
         public int Evaluate()
         {
-            if(_cells[0,0]==1 && _cells[0,1]==1 && _cells[0,2]==1)
+            return CheckRow(0);
+        }
+
+        public int CheckRow(int row)
+        {
+            if(_cells[row,0]==1 && _cells[row,1]==1 && _cells[row,2]==1)
                 return 1;
-                
+
             return -1;
         }
 
