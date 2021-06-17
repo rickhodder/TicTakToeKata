@@ -1,3 +1,5 @@
+using System;
+
 namespace TicTakToeKata
 {
     public class Board
@@ -6,7 +8,19 @@ namespace TicTakToeKata
 
         public int Evaluate()
         {
-            return CheckRow(0);
+            for (int row = 0; row < _cells.GetLength(0); row++)
+            {
+                var result = CheckRow(row);
+                if(result!=-1) return result;
+            }
+
+            for (int column = 0; column < _cells.GetLength(1); column++)
+            {
+                var result = CheckColumn(column);
+                if(result!=-1) return result;
+            }
+
+            return -1;
         }
 
         public int CheckRow(int row)
@@ -15,6 +29,17 @@ namespace TicTakToeKata
                 return 1;
 
             if(_cells[row,0]==2 && _cells[row,1]==2 && _cells[row,2]==2)
+                return 2;
+                
+            return -1;
+        }
+
+       public int CheckColumn(int column)
+        {
+            if(_cells[0,column]==1 && _cells[1,column]==1 && _cells[2,column]==1)
+                return 1;
+
+            if(_cells[0,column]==2 && _cells[1,column]==2 && _cells[2,column]==2)
                 return 2;
                 
             return -1;
