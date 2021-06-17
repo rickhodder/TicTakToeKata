@@ -14,6 +14,9 @@ namespace TicTakToeKata
             if(_cells[row,0]==1 && _cells[row,1]==1 && _cells[row,2]==1)
                 return 1;
 
+            if(_cells[row,0]==2 && _cells[row,1]==2 && _cells[row,2]==2)
+                return 2;
+                
             return -1;
         }
 
