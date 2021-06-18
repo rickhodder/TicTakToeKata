@@ -4,22 +4,28 @@ namespace TicTakToeKata
 {
     public class Board
     {
+        public const int Unsolved = -1;
+        public const int X = 1;
+        public const int O = 2;
+
+
         private int[,] _cells = new int[3, 3];
 
         public int Evaluate()
         {
-            var result = -1;
+            
+            var result = Unsolved;
 
             for (int row = 0; row < _cells.GetLength(0); row++)
             {
                 result = CheckRow(row);
-                if(result!=-1) return result;
+                if (result != Unsolved) return result;
             }
 
             for (int column = 0; column < _cells.GetLength(1); column++)
             {
                 result = CheckColumn(column);
-                if(result!=-1) return result;
+                if (result != Unsolved) return result;
             }
 
             result = CheckDiagonals();
@@ -28,39 +34,39 @@ namespace TicTakToeKata
 
         public int CheckDiagonals()
         {
-            if(_cells[0,0]==1 && _cells[1,1]==1 && _cells[2,2]==1)
-                return 1;
-            if(_cells[0,0]==2 && _cells[1,1]==2 && _cells[2,2]==2)
-                return 2;
+            if (_cells[0, 0] == X && _cells[1, 1] == X && _cells[2, 2] == X)
+                return X;
+            if (_cells[0, 0] == O && _cells[1, 1] == O && _cells[2, 2] == O)
+                return O;
 
-            if(_cells[0,2]==1 && _cells[1,1]==1 && _cells[2,1]==1)
-                return 1;
-            if(_cells[0,2]==2 && _cells[1,1]==2 && _cells[2,1]==2)
-                return 2;
+            if (_cells[0, 2] == X && _cells[1, 1] == X && _cells[2, 1] == X)
+                return X;
+            if (_cells[0, 2] == O && _cells[1, 1] == O && _cells[2, 1] == O)
+                return O;
 
-            return -1;
+            return Unsolved;
         }
 
         public int CheckRow(int row)
         {
-            if(_cells[row,0]==1 && _cells[row,1]==1 && _cells[row,2]==1)
-                return 1;
+            if (_cells[row, 0] == X && _cells[row, 1] == X && _cells[row, 2] == X)
+                return X;
 
-            if(_cells[row,0]==2 && _cells[row,1]==2 && _cells[row,2]==2)
-                return 2;
-                
-            return -1;
+            if (_cells[row, 0] == O && _cells[row, 1] == O && _cells[row, 2] == O)
+                return O;
+
+            return Unsolved;
         }
 
-       public int CheckColumn(int column)
+        public int CheckColumn(int column)
         {
-            if(_cells[0,column]==1 && _cells[1,column]==1 && _cells[2,column]==1)
-                return 1;
+            if (_cells[0, column] == X && _cells[1, column] == X && _cells[2, column] == X)
+                return X;
 
-            if(_cells[0,column]==2 && _cells[1,column]==2 && _cells[2,column]==2)
-                return 2;
-                
-            return -1;
+            if (_cells[0, column] == O && _cells[1, column] == O && _cells[2, column] == O)
+                return O;
+
+            return Unsolved;
         }
 
         public void SetCell(int row, int column, int value)

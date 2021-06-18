@@ -92,5 +92,23 @@ namespace TicTakToeKata
             Assert.Equal(2, _sut.Evaluate());
         }
 
+        [Fact]
+        public void NonWinningWithEmptyCell_IsNotSolved()
+        {
+            _sut.SetCell(0,0,1);
+
+            Assert.Equal(-1, _sut.Evaluate());
+        }
+
+        //[Fact]
+        public void Unsolvable_IsUnsolvable()
+        {
+            _sut.SetCell(1,1,2);
+            _sut.SetCell(2,2,1);
+            _sut.SetCell(1,2,1);
+
+            Assert.Equal(0, _sut.Evaluate());
+        }
+
     }
 }
