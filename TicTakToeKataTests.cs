@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -7,7 +6,7 @@ namespace TicTakToeKata
     public class TicTakToeKataTests
     {
         private Board _sut = new();
-        private BoardBuilder _builder = new();
+        private readonly BoardBuilder _builder = new();
 
         [Fact]
         public void EmptyBoard_NotSolved()
@@ -115,6 +114,5 @@ namespace TicTakToeKata
 
             Assert.Equal(Board.Draw, _sut.Evaluate());
         }
-
     }
 }
