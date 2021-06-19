@@ -4,6 +4,7 @@ namespace TicTakToeKata
 {
     public class Board
     {
+        public const int Draw = 0;
         public const int Unsolved = -1;
         public const int X = 1;
         public const int O = 2;
@@ -29,25 +30,27 @@ namespace TicTakToeKata
             }
 
             result = CheckDiagonals();
-            return result;
+            if (result != Unsolved) return result;
+
+            return Unsolved;
         }
 
-        public int CheckDiagonals()
+        private int CheckDiagonals()
         {
             if (_cells[0, 0] == X && _cells[1, 1] == X && _cells[2, 2] == X)
                 return X;
             if (_cells[0, 0] == O && _cells[1, 1] == O && _cells[2, 2] == O)
                 return O;
 
-            if (_cells[0, 2] == X && _cells[1, 1] == X && _cells[2, 1] == X)
+            if (_cells[0, 2] == X && _cells[1, 1] == X && _cells[2, 0] == X)
                 return X;
-            if (_cells[0, 2] == O && _cells[1, 1] == O && _cells[2, 1] == O)
+            if (_cells[0, 2] == O && _cells[1, 1] == O && _cells[2, 0] == O)
                 return O;
 
             return Unsolved;
         }
 
-        public int CheckRow(int row)
+        private int CheckRow(int row)
         {
             if (_cells[row, 0] == X && _cells[row, 1] == X && _cells[row, 2] == X)
                 return X;
@@ -58,7 +61,7 @@ namespace TicTakToeKata
             return Unsolved;
         }
 
-        public int CheckColumn(int column)
+        private int CheckColumn(int column)
         {
             if (_cells[0, column] == X && _cells[1, column] == X && _cells[2, column] == X)
                 return X;
