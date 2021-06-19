@@ -113,7 +113,7 @@ namespace TicTakToeKata
                 "OXO" 
             });
 
-            Assert.Equal(Board.Unsolved, _sut.Evaluate());
+            Assert.Equal(Board.Draw, _sut.Evaluate());
         }
 
     }
