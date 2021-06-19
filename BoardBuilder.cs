@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTakToeKata
 {
@@ -6,8 +8,9 @@ namespace TicTakToeKata
     {
         private readonly Board _board = new Board();
 
-        public Board Build(List<string> rows)
+        public Board Build(string board)
         {
+            var rows = board.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries).ToList();
             var r = 0;
 
             foreach (var row in rows)
