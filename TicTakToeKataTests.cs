@@ -5,13 +5,14 @@ namespace TicTakToeKata
 {
     public class TicTakToeKataTests
     {
-        private Board _sut = new();
+        private Board _sut;
         private readonly BoardBuilder _builder = new();
 
         [Fact]
         public void EmptyBoard_NotSolved()
         {
-            Assert.Equal(-1, _sut.Evaluate());
+            _sut=_builder.Build(new());
+            Assert.Equal(Board.Unsolved, _sut.Evaluate());
         }
 
         [Fact]
