@@ -51,7 +51,7 @@ namespace TicTakToeKata
             {
                 var result = CheckRow(row);
                 if (result == Unsolved) continue;
-                
+
                 rowWinner = result;
                 return true;
             }
@@ -63,63 +63,37 @@ namespace TicTakToeKata
         {
             diagonalWinner = Unsolved;
 
-            if (
-                (_cells[0, 0] == X &&
-                 _cells[1, 1] == X &&
-                 _cells[2, 2] == X)
-                ||
-                (_cells[0, 2] == X &&
-                 _cells[1, 1] == X &&
-                 _cells[2, 0] == X)
-            )
+            if (_cells[0, 0] == _cells[1, 1] &&
+                _cells[1, 1] == _cells[2, 2] )
             {
-                diagonalWinner = X;
-                return true;
+                diagonalWinner = _cells[0, 0];
+            }
+            
+            if (_cells[0, 2] == _cells[1, 1] &&
+                _cells[1, 1] == _cells[2, 0])
+            {
+                diagonalWinner = _cells[0,2];
             }
 
-            if (
-                (_cells[0, 0] == O &&
-                 _cells[1, 1] == O &&
-                 _cells[2, 2] == O)
-                ||
-                (_cells[0, 2] == O &&
-                 _cells[1, 1] == O &&
-                 _cells[2, 0] == O)
-            )
-            {
-                diagonalWinner = O;
-                return true;
-            }
-
-            return false;
+            return diagonalWinner!=Unsolved && diagonalWinner!=0;
         }
 
         private int CheckRow(int row)
         {
-            if (_cells[row, 0] == X &&
-                _cells[row, 1] == X &&
-                _cells[row, 2] == X)
-                return X;
-
-            if (_cells[row, 0] == O &&
-                _cells[row, 1] == O &&
-                _cells[row, 2] == O)
-                return O;
+            if (_cells[row, 0] != 0 &&
+                _cells[row, 0] == _cells[row, 1] &&
+                _cells[row, 1] == _cells[row, 2])
+                return _cells[row, 0];
 
             return Unsolved;
         }
 
         private int CheckColumn(int column)
         {
-            if (_cells[0, column] == X &&
-                _cells[1, column] == X &&
-                _cells[2, column] == X)
-                return X;
-
-            if (_cells[0, column] == O &&
-                _cells[1, column] == O &&
-                _cells[2, column] == O)
-                return O;
+            if (_cells[0, column]!=0 &&
+                _cells[0, column] == _cells[1, column] &&
+                _cells[1, column] == _cells[2, column] )
+                return _cells[0, column];
 
             return Unsolved;
         }
